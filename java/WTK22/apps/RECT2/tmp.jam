@@ -1,0 +1,11 @@
+AppVer = @@APP_VERSION@@
+LastModified = @@LAST_MODIFIED@@
+SPsize = @@RECORD_SIZE@@
+AppClass = com.strnet.game.main.Main
+UseBrowser = @@USE_BROWSER@@
+AppName = @@APP_NAME@@
+PackageURL = @@JAR_NAME@@
+AppSize = @@APP_SIZE@@
+AppIcon = appicon.gif
+AppMainTitle = appmaintitle.gif
+UseNetwork = http

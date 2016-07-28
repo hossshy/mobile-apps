@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="STR-Mobile" default="midp" basedir=".">
+
+  <!-- setting project -->
+  <property name="project.name" value="SchoorLp" />
+  <property name="app.name" value="赤ゐ糸 -後編-" />
+  <property name="app.version" value="1.0.0" />
+  <property name="record.size" value="10240"/>
+  <property name="use.browser" value="launch"/>
+  <property name="max.png" value="30"/>
+
+
+
+
+  <target name="exec">
+	<ant antfile="../tool/build.xml" target="${target}">
+	</ant>
+  </target>
+  <target name="midp">
+	<antcall target="exec"><param name="target" value="midp" /></antcall>
+  </target>
+  <target name="midp-all">
+	<antcall target="exec"><param name="target" value="midp-all" /></antcall>
+  </target>
+  <target name="doja">
+	<antcall target="exec"><param name="target" value="doja" /></antcall>
+  </target>
+  <target name="vf">
+	<antcall target="exec"><param name="target" value="vf" /></antcall>
+  </target>
+  <target name="web">
+	<antcall target="exec"><param name="target" value="web" /></antcall>
+  </target>
+  <target name="emu">
+	<antcall target="exec"><param name="target" value="emu" /></antcall>
+  </target>
+  <target name="ftp_siken">
+	<antcall target="exec"><param name="target" value="ftp_siken" /></antcall>
+  </target>
+  <target name="ftp_str">
+	<antcall target="exec"><param name="target" value="ftp_str" /></antcall>
+  </target>
+  <target name="ftp_honban">
+	<antcall target="exec"><param name="target" value="ftp_honban" /></antcall>
+  </target>
+  <target name="all">
+	<antcall target="exec"><param name="target" value="midp-all" /></antcall>
+	<antcall target="exec"><param name="target" value="doja" /></antcall>
+	<antcall target="exec"><param name="target" value="vf" /></antcall>
+	<antcall target="exec"><param name="target" value="ftp_siken" /></antcall>
+	<antcall target="exec"><param name="target" value="ftp_honban" /></antcall>
+  </target>
+</project>

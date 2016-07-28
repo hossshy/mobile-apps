@@ -1,0 +1,237 @@
+/*
+ * auto generate by com.strnet.escape-maker
+ */
+package com.strnet.game.main;
+
+import java.util.Vector;
+
+public class Data
+{
+	private static String[] stories = null;
+	private static GroupData[] groups = null;
+
+	public static String getStoryCode(int id)
+	{
+		return stories[id];
+	}
+
+	public static GroupData getGroupData(int id)
+	{
+		return groups[id];
+	}
+	
+	public static CharacterData[] make()
+	{
+		Vector v = new Vector();
+		Vector s = new Vector();
+		Vector g = new Vector();
+		GroupData gd = null;
+s.addElement("set image 2 set play 0");
+s.addElement("set msg お疲れ様 set title 0");
+RoomData.addRooms(0, "-1:-1:3:1"); // ドア側
+RoomData.addRooms(1, "-1:-1:0:2"); // 絵側
+RoomData.addRooms(2, "-1:-1:1:3"); // 棚側
+RoomData.addRooms(3, "-1:-1:2:0"); // ロッカー側
+RoomData.addRooms(4, "-1:2:-1:-1"); // 棚の裏
+RoomData.addRooms(5, "-1:1:-1:-1"); // ９ボタン詳細
+RoomData.addRooms(6, "-1:1:-1:-1"); // テーブル詳細
+RoomData.addRooms(7, "-1:0:-1:-1"); // 色パネル詳細
+RoomData.addRooms(8, "-1:7:-1:-1"); // 色パネル箱下
+v.addElement(new CharacterData(-100, -1, 0, 0, 0, 0,0,0,0,null, CharacterData.STATE_HIDE, -1)); //色パネルの謎解き
+v.addElement(new CharacterData(-101, -1, 0, 0, 0, 0,0,0,0,null, CharacterData.STATE_HIDE, -1)); //壁板外し
+v.addElement(new CharacterData(-102, -1, 0, 0, 0, 0,0,0,0,null, CharacterData.STATE_HIDE, -1)); //ロッカーの謎解き
+v.addElement(new CharacterData(-103, -1, 0, 0, 0, 0,0,0,0,null, CharacterData.STATE_HIDE, -1)); //９ボタンの謎解き
+v.addElement(new CharacterData(1, 4, 0, 0,0, 0,0,240,240,"", CharacterData.STATE_SHOW, -1)); //ドア背景
+v.addElement(new CharacterData(2, 12, 0, 81,42, 0,0,74,131,"set msg 開かない…", CharacterData.STATE_SHOW, -1)); //ドア
+v.addElement(new CharacterData(3, -1, 0, 84,98, 0,0,14,14,"if isset item 134 set delitem 134 set hide 3 set hide 2 set show 4 else set msg 開かない… end", CharacterData.STATE_SHOW, -1)); //ドアノブ
+v.addElement(new CharacterData(4, 11, 0, 81,35, 0,0,74,155,"set story 1", CharacterData.STATE_HIDE, -1)); //開いたドア
+v.addElement(new CharacterData(5, 16, 0, 20,134, 0,0,60,60,"set go 7", CharacterData.STATE_SHOW, -1)); //色パネル箱
+v.addElement(new CharacterData(6, 4, 1, 0,0, 0,0,240,240,"", CharacterData.STATE_SHOW, -1)); //絵側背景
+v.addElement(new CharacterData(7, 24, 1, 38,52, 0,0,64,64,"set go 5", CharacterData.STATE_HIDE, -1)); //９ボタン入り口
+v.addElement(new CharacterData(8, 23, 1, 38,52, 0,0,64,64,"set go 5", CharacterData.STATE_SHOW, -1)); //９ボタン入り口板
+v.addElement(new CharacterData(9, 23, 1, 38,122, 0,0,64,64,"set hide 9 set show 10 set msg 裏返した", CharacterData.STATE_HIDE, -1)); //落ちた９ボタン入り口板
+v.addElement(new CharacterData(10, 25, 1, 38,122, 0,0,64,64,"set hide 10 set show 9 set msg 裏返した", CharacterData.STATE_HIDE, -1)); //落ちた９ボタン入り口板裏
+v.addElement(new CharacterData(11, 35, 1, 47,153, 22,0,22,22,"set msg なんだこれ…", CharacterData.STATE_SHOW, 10)); //絵マーク１
+v.addElement(new CharacterData(12, 35, 1, 71,153, 44,0,22,22,"set msg なんだこれ…", CharacterData.STATE_SHOW, 10)); //絵マーク２
+v.addElement(new CharacterData(13, 35, 1, 71,130, 22,0,22,22,"set msg なんだこれ…", CharacterData.STATE_SHOW, 10)); //絵マーク３
+v.addElement(new CharacterData(14, 28, 1, 82,156, 0,0,120,48,"set msg テーブルだ", CharacterData.STATE_SHOW, -1)); //テーブル
+v.addElement(new CharacterData(15, -1, 1, 111,186, 0,0,62,18,"set go 6", CharacterData.STATE_SHOW, -1)); //テーブル下
+v.addElement(new CharacterData(16, 34, 1, 102,126, 0,0,54,49,"if isset item 138 set delitem 138 set show 17 set msg 何か表示された！ else set msg モニタだ end", CharacterData.STATE_SHOW, -1)); //モニタ
+v.addElement(new CharacterData(17, 34, 1, 109,136, 58,0,40,13,"set msg どういう意味だろう…", CharacterData.STATE_HIDE, -1)); //モニタ文字
+v.addElement(new CharacterData(18, 4, 2, 0,0, 0,0,240,240,"", CharacterData.STATE_SHOW, -1)); //棚側背景
+v.addElement(new CharacterData(19, 14, 2, 20,50, 0,0,85,142,"set msg 何もない", CharacterData.STATE_SHOW, -1)); //棚
+v.addElement(new CharacterData(20, -1, 2, 93,144, 0,0,34,34,"set go 4", CharacterData.STATE_SHOW, -1)); //棚裏へ
+v.addElement(new CharacterData(21, 27, 2, 133,90, 0,21,62,27,"set msg 何かの模様みたいだ", CharacterData.STATE_SHOW, -1)); //２進数プレート
+v.addElement(new CharacterData(22, 27, 2, 148,59, 0,0,32,21,"if isset show -102 set msg もう何もない else isset show 30 isset show 37 isset show 40 isset hide 27 isset hide 34 set show 23 set show -102 set msg 何か落ちた else set msg 入力が違うみたい… end", CharacterData.STATE_SHOW, -1)); //２進数ボタン
+v.addElement(new CharacterData(23, 3, 2, 151,155, 73,0,23,24,"set hide 23 set item 133 set msg シートを手に入れた！", CharacterData.STATE_HIDE, -1)); //出てきたシート
+v.addElement(new CharacterData(24, 4, 3, 0,0, 0,0,240,240,"", CharacterData.STATE_SHOW, -1)); //ロッカー側背景
+v.addElement(new CharacterData(25, 7, 3, 14,40, 0,0,32,150,"", CharacterData.STATE_SHOW, -1)); //ロッカー１背景
+v.addElement(new CharacterData(26, 7, 3, 18,53, 36,13,26,127,"set show 27 set hide 26", CharacterData.STATE_SHOW, -1)); //ロッカー１閉ドア
+v.addElement(new CharacterData(27, 7, 3, 41,50, 65,10,21,135,"set show 26 set hide 27", CharacterData.STATE_HIDE, -1)); //ロッカー１開ドア
+v.addElement(new CharacterData(28, 7, 3, 50,40, 0,0,32,150,"", CharacterData.STATE_SHOW, -1)); //ロッカー２背景
+v.addElement(new CharacterData(29, 7, 3, 54,53, 36,13,26,127,"set show 30 set hide 29", CharacterData.STATE_SHOW, -1)); //ロッカー２閉ドア
+v.addElement(new CharacterData(30, 7, 3, 77,50, 65,10,21,135,"set show 29 set hide 30", CharacterData.STATE_HIDE, -1)); //ロッカー２開ドア
+v.addElement(new CharacterData(31, 7, 3, 86,40, 0,0,32,150,"", CharacterData.STATE_SHOW, -1)); //ロッカー３背景
+v.addElement(new CharacterData(32, 30, 3, 99,114, 0,0,10,60,"set item 131 set hide 32 set msg 長い棒を手に入れた！", CharacterData.STATE_SHOW, -1)); //ロッカーの長い棒
+v.addElement(new CharacterData(33, 7, 3, 90,53, 36,13,26,127,"set show 34 set hide 33", CharacterData.STATE_SHOW, -1)); //ロッカー３閉ドア
+v.addElement(new CharacterData(34, 7, 3, 113,50, 65,10,21,135,"set show 33 set hide 34", CharacterData.STATE_HIDE, -1)); //ロッカー３開ドア
+v.addElement(new CharacterData(35, 7, 3, 122,40, 0,0,32,150,"", CharacterData.STATE_SHOW, -1)); //ロッカー４背景
+v.addElement(new CharacterData(36, 7, 3, 126,53, 36,13,26,127,"set show 37 set hide 36", CharacterData.STATE_SHOW, -1)); //ロッカー４閉ドア
+v.addElement(new CharacterData(37, 7, 3, 149,50, 65,10,21,135,"set show 36 set hide 37", CharacterData.STATE_HIDE, -1)); //ロッカー４開ドア
+v.addElement(new CharacterData(38, 7, 3, 158,40, 0,0,32,150,"", CharacterData.STATE_SHOW, -1)); //ロッカー５背景
+v.addElement(new CharacterData(39, 7, 3, 162,53, 36,13,26,127,"set show 40 set hide 39", CharacterData.STATE_SHOW, -1)); //ロッカー５閉ドア
+v.addElement(new CharacterData(40, 7, 3, 185,50, 65,10,21,135,"set show 39 set hide 40", CharacterData.STATE_HIDE, -1)); //ロッカー５開ドア
+v.addElement(new CharacterData(41, 15, 4, 0,0, 0,0,240,240,"", CharacterData.STATE_SHOW, -1)); //棚の裏背景
+v.addElement(new CharacterData(42, 3, 4, 220,160, 50,0,20,24,"if isset item 131 set delitem 131 set hide 42 set item 132 set msg 小びんを手に入れた else set msg 届かない… end", CharacterData.STATE_SHOW, -1)); //落ちてる小びん
+v.addElement(new CharacterData(43, 35, 4, 10,15, 0,0,22,22,"set msg なんだこれ…", CharacterData.STATE_SHOW, -1)); //棚マーク１
+v.addElement(new CharacterData(44, 35, 4, 34,15, 22,0,22,22,"set msg なんだこれ…", CharacterData.STATE_SHOW, -1)); //棚マーク２
+v.addElement(new CharacterData(45, 35, 4, 10,39, 44,0,22,22,"set msg なんだこれ…", CharacterData.STATE_SHOW, -1)); //棚マーク３
+v.addElement(new CharacterData(46, 29, 6, 0,0, 0,0,240,240,"", CharacterData.STATE_SHOW, -1)); //テーブル詳細背景
+v.addElement(new CharacterData(47, 35, 6, 92,156, 0,0,22,22,"set msg なんだこれ…", CharacterData.STATE_SHOW, -1)); //テーブルマーク１
+v.addElement(new CharacterData(48, 35, 6, 116,156, 22,0,22,22,"set msg なんだこれ…", CharacterData.STATE_SHOW, -1)); //テーブルマーク２
+v.addElement(new CharacterData(49, 35, 6, 116,132, 44,0,22,22,"set msg なんだこれ…", CharacterData.STATE_SHOW, -1)); //テーブルマーク３
+v.addElement(new CharacterData(50, 22, 7, 0,0, 0,0,240,240,"", CharacterData.STATE_SHOW, -1)); //色パネル背景
+v.addElement(new CharacterData(51, 33, 7, 66,94, 0,22,110,33,"if isset show -100 set msg もう何もない else isset show 66 isset show 75 isset show 82 isset show 86 set show -100 set show 53 set msg 何か出てきた！ else set msg 入力が違うみたい… end", CharacterData.STATE_SHOW, -1)); //色パネルボタン
+v.addElement(new CharacterData(52, 33, 7, 66,130, 0,55,110,33,"if isset show -100 set msg もう何もない else set msg 何か出てくるのかな？ end", CharacterData.STATE_SHOW, -1)); //色パネル出口
+v.addElement(new CharacterData(53, 6, 7, 49,116, 0,0,120,120,"set item 130 set hide 53 set msg スパナを手に入れた！", CharacterData.STATE_HIDE, -1)); //出てきたスパナ
+v.addElement(new CharacterData(54, -1, 7, 58,177, 0,0,125,14,"set go 8", CharacterData.STATE_SHOW, -1)); //色パネル箱下へ
+v.addElement(new CharacterData(55, 41, 8, 0,0, 0,0,240,240,"", CharacterData.STATE_SHOW, -1)); //色パネル箱下背景
+v.addElement(new CharacterData(56, 42, 8, 53,180, 0,0,112,23,"set hide 56 set item 138 set msg リモコンを手に入れた！", CharacterData.STATE_SHOW, -1)); //落ちてるリモコン
+v.addElement(new CharacterData(57, 18, 5, 0,0, 0,0,240,240,"", CharacterData.STATE_SHOW, -1)); //壁穴
+v.addElement(new CharacterData(58, 20, 5, 77,119, 66,0,30,11,"if isset show -103 set msg もう何もない else isset show 90 isset show 95 isset show 98 isset show 104 isset show 108 isset show 111 isset show 114 isset show 119 isset show 124 set show -103 set show 60 set msg 何か出てきた！ else set msg 入力が違うみたい… end", CharacterData.STATE_SHOW, -101)); //チェックボタン
+v.addElement(new CharacterData(59, 20, 5, 118,119, 66,11,30,11,"set msg 穴が空いてる", CharacterData.STATE_SHOW, -101)); //鍵の口
+v.addElement(new CharacterData(60, 20, 5, 124,123, 98,16,18,6,"set hide 60 set item 134 set msg 鍵を手に入れた！", CharacterData.STATE_HIDE, -1)); //出てきた鍵
+v.addElement(new CharacterData(61, 19, 5, 37,9, 0,0,150,150,"if isset hide 62 set hide 61 set show 57 set hide 8 set show 7 set show 9 set show -101 set msg フタを外した！ else set msg 固いフタだ… end", CharacterData.STATE_SHOW, -1)); //壁板
+v.addElement(new CharacterData(62, 21, 5, 39,11, 0,0,20,20,"if isset item 130 set delitem 130 set hide 62 set hide 63 set hide 64 set hide 65 set msg ボルトを外した！ else set msg 素手では外せない… end", CharacterData.STATE_SHOW, -1)); //ボルト１
+v.addElement(new CharacterData(63, 21, 5, 166,11, 0,0,20,20,"if isset item 130 set delitem 130 set hide 62 set hide 63 set hide 64 set hide 65 set msg ボルトを外した！ else set msg 素手では外せない… end", CharacterData.STATE_SHOW, -1)); //ボルト２
+v.addElement(new CharacterData(64, 21, 5, 39,137, 0,0,20,20,"if isset item 130 set delitem 130 set hide 62 set hide 63 set hide 64 set hide 65 set msg ボルトを外した！ else set msg 素手では外せない… end", CharacterData.STATE_SHOW, -1)); //ボルト３
+v.addElement(new CharacterData(65, 21, 5, 165,137, 0,0,20,20,"if isset item 130 set delitem 130 set hide 62 set hide 63 set hide 64 set hide 65 set msg ボルトを外した！ else set msg 素手では外せない… end", CharacterData.STATE_SHOW, -1)); //ボルト４
+gd = new GroupData();
+gd.add(new CharacterData(66, 33, 7, 59,64, 0,0,22,22,"set toggle 0", CharacterData.STATE_SHOW, -1)); //色パネル１
+gd.add(new CharacterData(67, 33, 7, 59,64, 22,0,22,22,"set toggle 0", CharacterData.STATE_HIDE, -1)); //色パネル１
+gd.add(new CharacterData(68, 33, 7, 59,64, 44,0,22,22,"set toggle 0", CharacterData.STATE_HIDE, -1)); //色パネル１
+gd.add(new CharacterData(69, 33, 7, 59,64, 66,0,22,22,"set toggle 0", CharacterData.STATE_HIDE, -1)); //色パネル１
+gd.add(new CharacterData(70, 33, 7, 59,64, 88,0,22,22,"set toggle 0", CharacterData.STATE_HIDE, -1)); //色パネル１
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(72, 33, 7, 92,64, 0,0,22,22,"set toggle 1", CharacterData.STATE_HIDE, -1)); //色パネル２
+gd.add(new CharacterData(73, 33, 7, 92,64, 22,0,22,22,"set toggle 1", CharacterData.STATE_SHOW, -1)); //色パネル２
+gd.add(new CharacterData(74, 33, 7, 92,64, 44,0,22,22,"set toggle 1", CharacterData.STATE_HIDE, -1)); //色パネル２
+gd.add(new CharacterData(75, 33, 7, 92,64, 66,0,22,22,"set toggle 1", CharacterData.STATE_HIDE, -1)); //色パネル２
+gd.add(new CharacterData(76, 33, 7, 92,64, 88,0,22,22,"set toggle 1", CharacterData.STATE_HIDE, -1)); //色パネル２
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(78, 33, 7, 125,64, 0,0,22,22,"set toggle 2", CharacterData.STATE_HIDE, -1)); //色パネル３
+gd.add(new CharacterData(79, 33, 7, 125,64, 22,0,22,22,"set toggle 2", CharacterData.STATE_HIDE, -1)); //色パネル３
+gd.add(new CharacterData(80, 33, 7, 125,64, 44,0,22,22,"set toggle 2", CharacterData.STATE_SHOW, -1)); //色パネル３
+gd.add(new CharacterData(81, 33, 7, 125,64, 66,0,22,22,"set toggle 2", CharacterData.STATE_HIDE, -1)); //色パネル３
+gd.add(new CharacterData(82, 33, 7, 125,64, 88,0,22,22,"set toggle 2", CharacterData.STATE_HIDE, -1)); //色パネル３
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(84, 33, 7, 158,64, 0,0,22,22,"set toggle 3", CharacterData.STATE_HIDE, -1)); //色パネル４
+gd.add(new CharacterData(85, 33, 7, 158,64, 22,0,22,22,"set toggle 3", CharacterData.STATE_HIDE, -1)); //色パネル４
+gd.add(new CharacterData(86, 33, 7, 158,64, 44,0,22,22,"set toggle 3", CharacterData.STATE_HIDE, -1)); //色パネル４
+gd.add(new CharacterData(87, 33, 7, 158,64, 66,0,22,22,"set toggle 3", CharacterData.STATE_SHOW, -1)); //色パネル４
+gd.add(new CharacterData(88, 33, 7, 158,64, 88,0,22,22,"set toggle 3", CharacterData.STATE_HIDE, -1)); //色パネル４
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(90, 20, 5, 72,34, 0,0,22,22,"set toggle 4", CharacterData.STATE_SHOW, -101)); //壁ボタン１
+gd.add(new CharacterData(91, 20, 5, 72,34, 22,0,22,22,"set toggle 4", CharacterData.STATE_HIDE, -101)); //壁ボタン１
+gd.add(new CharacterData(92, 20, 5, 72,34, 44,0,22,22,"set toggle 4", CharacterData.STATE_HIDE, -101)); //壁ボタン１
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(94, 20, 5, 103,34, 0,0,22,22,"set toggle 5", CharacterData.STATE_SHOW, -101)); //壁ボタン２
+gd.add(new CharacterData(95, 20, 5, 103,34, 22,0,22,22,"set toggle 5", CharacterData.STATE_HIDE, -101)); //壁ボタン２
+gd.add(new CharacterData(96, 20, 5, 103,34, 44,0,22,22,"set toggle 5", CharacterData.STATE_HIDE, -101)); //壁ボタン２
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(98, 20, 5, 134,34, 0,0,22,22,"set toggle 6", CharacterData.STATE_SHOW, -101)); //壁ボタン３
+gd.add(new CharacterData(99, 20, 5, 134,34, 22,0,22,22,"set toggle 6", CharacterData.STATE_HIDE, -101)); //壁ボタン３
+gd.add(new CharacterData(100, 20, 5, 134,34, 44,0,22,22,"set toggle 6", CharacterData.STATE_HIDE, -101)); //壁ボタン３
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(102, 20, 5, 72,64, 0,0,22,22,"set toggle 7", CharacterData.STATE_SHOW, -101)); //壁ボタン４
+gd.add(new CharacterData(103, 20, 5, 72,64, 22,0,22,22,"set toggle 7", CharacterData.STATE_HIDE, -101)); //壁ボタン４
+gd.add(new CharacterData(104, 20, 5, 72,64, 44,0,22,22,"set toggle 7", CharacterData.STATE_HIDE, -101)); //壁ボタン４
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(106, 20, 5, 103,64, 0,0,22,22,"set toggle 8", CharacterData.STATE_SHOW, -101)); //壁ボタン５
+gd.add(new CharacterData(107, 20, 5, 103,64, 22,0,22,22,"set toggle 8", CharacterData.STATE_HIDE, -101)); //壁ボタン５
+gd.add(new CharacterData(108, 20, 5, 103,64, 44,0,22,22,"set toggle 8", CharacterData.STATE_HIDE, -101)); //壁ボタン５
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(110, 20, 5, 134,64, 0,0,22,22,"set toggle 9", CharacterData.STATE_SHOW, -101)); //壁ボタン６
+gd.add(new CharacterData(111, 20, 5, 134,64, 22,0,22,22,"set toggle 9", CharacterData.STATE_HIDE, -101)); //壁ボタン６
+gd.add(new CharacterData(112, 20, 5, 134,64, 44,0,22,22,"set toggle 9", CharacterData.STATE_HIDE, -101)); //壁ボタン６
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(114, 20, 5, 72,94, 0,0,22,22,"set toggle 10", CharacterData.STATE_SHOW, -101)); //壁ボタン７
+gd.add(new CharacterData(115, 20, 5, 72,94, 22,0,22,22,"set toggle 10", CharacterData.STATE_HIDE, -101)); //壁ボタン７
+gd.add(new CharacterData(116, 20, 5, 72,94, 44,0,22,22,"set toggle 10", CharacterData.STATE_HIDE, -101)); //壁ボタン７
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(118, 20, 5, 103,94, 0,0,22,22,"set toggle 11", CharacterData.STATE_SHOW, -101)); //壁ボタン８
+gd.add(new CharacterData(119, 20, 5, 103,94, 22,0,22,22,"set toggle 11", CharacterData.STATE_HIDE, -101)); //壁ボタン８
+gd.add(new CharacterData(120, 20, 5, 103,94, 44,0,22,22,"set toggle 11", CharacterData.STATE_HIDE, -101)); //壁ボタン８
+g.addElement(gd);
+gd.addAlltoVector(v);
+gd = new GroupData();
+gd.add(new CharacterData(122, 20, 5, 134,94, 0,0,22,22,"set toggle 12", CharacterData.STATE_SHOW, -101)); //壁ボタン９
+gd.add(new CharacterData(123, 20, 5, 134,94, 22,0,22,22,"set toggle 12", CharacterData.STATE_HIDE, -101)); //壁ボタン９
+gd.add(new CharacterData(124, 20, 5, 134,94, 44,0,22,22,"set toggle 12", CharacterData.STATE_HIDE, -101)); //壁ボタン９
+g.addElement(gd);
+gd.addAlltoVector(v);
+v.addElement(new CharacterData(126, 1, 0, 42,25, 46,0,18,30,"set event 1", CharacterData.STATE_SHOW, -1, CharacterData.ATTR_SHOW_MYITEM)); //スペシャル左カーソル
+v.addElement(new CharacterData(127, 1, 0, 60,25, 64,0,126,30,"", CharacterData.STATE_SHOW, -1, CharacterData.ATTR_SHOW_MYITEM)); //スペシャルアイテム一覧
+v.addElement(new CharacterData(128, 1, 0, 186,25, 190,0,18,30,"set event 2", CharacterData.STATE_SHOW, -1, CharacterData.ATTR_SHOW_MYITEM)); //スペシャル右カーソル
+v.addElement(new CharacterData(129, 1, 0, 60,60, 0,30,126,126,"", CharacterData.STATE_SHOW, -1, CharacterData.ATTR_SHOW_MYITEM)); //スペシャル詳細アイテム窓
+v.addElement(new ItemData(130, 3, 0, 0, 24, 24, 630, "set select 130 set detail 630 set msg スパナだ…", -1)); // スパナ
+v.addElement(new ItemData(630, 6, 0, 0, 120, 120, 0, "set msg 何に使おう…", -1)); // 詳細スパナ
+v.addElement(new ItemData(131, 3, 24, 0, 24, 24, 631, "set select 131 set detail 631 set msg 長い棒だ…", -1)); // 長い棒
+v.addElement(new ItemData(631, 32, 0, 0, 120, 120, 0, "set msg 結構長い…", -1)); // 詳細長い棒
+v.addElement(new ItemData(132, 3, 48, 0, 24, 24, 632, "set select 132 set detail 632 set msg 小びんだ…", -1)); // 小びん
+v.addElement(new ItemData(632, 31, 0, 0, 120, 120, 0, "set msg 中に液体が入ってる", -1)); // 詳細小びん
+v.addElement(new ItemData(133, 3, 72, 0, 24, 24, 633, "set select 133 set detail 633 set msg シートだ…", -1)); // シート
+v.addElement(new ItemData(633, 9, 0, 0, 120, 120, 0, "if isset item 132 set delitem 133 set item 135 set msg 文字が出てきた！ else set msg 何も書かれてない… end", -1)); // 詳細シート
+v.addElement(new ItemData(134, 3, 96, 0, 24, 24, 634, "set select 134 set detail 634 set msg 鍵だ…", -1)); // 鍵
+v.addElement(new ItemData(634, 8, 0, 0, 120, 120, 0, "set msg これで…", -1)); // 詳細鍵
+v.addElement(new ItemData(135, 3, 120, 0, 24, 24, 635, "set select 135 set detail 635 set msg 文字シートだ…", -1)); // 文字シート
+v.addElement(new ItemData(635, 13, 0, 0, 120, 120, 0, "set msg どういう意味だ…", -1)); // 詳細文字シート
+v.addElement(new ItemData(136, 3, 144, 0, 24, 24, 636, "set select 136 set detail 636 set msg トンカチだ…", -1)); // トンカチ
+v.addElement(new ItemData(636, 36, 0, 0, 120, 120, 0, "set msg 何に使おう…", -1)); // 詳細トンカチ
+v.addElement(new ItemData(137, 3, 168, 0, 24, 24, 637, "set select 137 set detail 637 set msg 紙切れだ…", -1)); // 紙切れ
+v.addElement(new ItemData(637, 38, 0, 0, 120, 120, 0, "set msg ｗ＝ｗｈｉｔｅ…", -1)); // 詳細紙切れ
+v.addElement(new ItemData(138, 3, 192, 0, 24, 24, 638, "set select 138 set detail 638 set msg リモコンだ…", -1)); // リモコン
+v.addElement(new ItemData(638, 39, 0, 0, 120, 120, 0, "set msg 何に使おう…", -1)); // 詳細リモコン
+
+		CharacterData[] ret = new CharacterData[v.size()];
+		for ( int i = 0; i < v.size(); i++ )
+		{
+			ret[i] = (CharacterData) v.elementAt(i);
+		}
+
+		stories = new String[s.size()];
+		for ( int i = 0; i < s.size(); i++ )
+		{
+			stories[i] = (String) s.elementAt(i);
+		}
+		groups = new GroupData[g.size()];
+		for ( int i = 0; i < g.size(); i++ )
+		{
+			groups[i] = (GroupData) g.elementAt(i);
+		}
+
+		return ret;
+	}
+}

@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Abstract-STR-Mobile" basedir=".">
+
+	<!-- 環境設定 -->
+ 	<property file="../tool/build.properties" />
+
+    <property name="vendor" value="STR"/>
+    <property name="wtk.icon" value="icon.png"/>
+    <property name="keep.class" value="public class com.strnet.game.main.Main" />
+
+    <property name="doja.project.dir" value="${doja.path}/apps/${project.name}/" />
+    <property name="wtk.project.dir" value="${wtk.path}/apps/${project.name}/" />
+
+    <property name="ftp.upload.dir" value="${wtk.project.dir}/web"/>
+    <property name="web.dir" value="${ftp.upload.dir}/${project.name}"/>
+    <property name="tool.dir" value="${wtk.path}/apps/tool" />
+    <property name="web.template.dir" value="${tool.dir}/web" />
+    <property name="fsize.file" value="${tool.dir}/${fsize.name}" />
+    <property name="split.exec.path" value="${tool.dir}/${split.name}" />
+    <property name="tmp.jam" value="${tool.dir}/tmp.jam" />
+    <property name="dx" value="" />
+    <property name="au.tmp.jad" value="${tool.dir}/tmp.jad" />
+    <property name="tmp.manifest" value="${tool.dir}/MANIFEST.MF" />
+    <property name="vf.tmp.manifest" value="${tool.dir}/MANIFEST_vf.MF" />
+	<property name="vf.class.path" value="${tool.dir}/stubclasses.zip" />
+
+
+    <property name="doja.bin.dir" value="${doja.project.dir}/bin"/>
+    <property name="doja.src.dir" value="${doja.project.dir}/src"/>
+    <property name="doja.res.dir" value="${doja.project.dir}/res"/>
+    <property name="doja.classes.dir" value="${doja.project.dir}/classes" />
+    <property name="doja.preverify.dir" value="${doja.project.dir}/preclasses" />
+    <property name="doja.unzip.dir" value="${doja.project.dir}/unzip" />
+    <property name="f.record.size" value="357200" />
+
+    <property name="wtk.bin.dir" value="${wtk.project.dir}/bin"/>
+    <property name="wtk.src.dir" value="${wtk.project.dir}/src"/>
+    <property name="wtk.res.dir" value="${wtk.project.dir}/res"/>
+    <property name="wtk.classes.dir" value="${wtk.project.dir}/classes" />
+    <property name="wtk.preverify.dir" value="${wtk.project.dir}/preclasses" />
+    <property name="wtk.unzip.dir" value="${wtk.project.dir}/unzip" />
+    <property name="manifest" value="${wtk.bin.dir}/MANIFEST.MF"/>
+
+    <property name="vf.tmp.jad" value="${tool.dir}/tmp_vf.jad" />
+    <property name="vf.project.dir" value="${wtk.project.dir}/vf"/>
+    <property name="vf.bin.dir" value="${vf.project.dir}/bin"/>
+    <property name="vf.src.dir" value="${vf.project.dir}/src"/>
+    <property name="vf.res.dir" value="${vf.project.dir}/res"/>
+    <property name="vf.classes.dir" value="${vf.project.dir}/classes" />
+    <property name="vf.preverify.dir" value="${vf.project.dir}/preclasses" />
+    <property name="vf.unzip.dir" value="${vf.project.dir}/unzip" />
+
+    <property name="doja.suffix" value=".i" />
+    <property name="doja.old" value="" />
+
+    <property name="pc.project.dir" value="${wtk.project.dir}/pc"/>
+    <property name="pc.bin.dir" value="${pc.project.dir}/bin"/>
+    <property name="pc.src.dir" value="${pc.project.dir}/src"/>
+    <property name="pc.res.dir" value="${pc.project.dir}/res"/>
+    <property name="pc.classes.dir" value="${pc.project.dir}/classes" />
+
+    <target name="clean">
+        <delete dir="${classes.dir}"/>
+    </target>
+    
+	<!-- i-mode only -->
+	<target name="setting">
+	  <delete dir="${doja.src.dir}"/>
+	  <mkdir dir="${doja.src.dir}" />
+	  <mkdir dir="${doja.res.dir}" />
+	  <copy todir="${doja.res.dir}">
+		<fileset dir="${wtk.res.dir}">
+		  <include name="*.png" />
+		  <include name="*.mld" />
+		  <include name="*.dat" />
+		  <include name="*.properties" />
+		  <include name="appicon.gif" />
+		  <include name="appmaintitle.gif" />
+		</fileset>
+	  </copy>
+	  <exec executable="${png_to_gif.file}">
+			<arg value="${doja.res.dir}" />
+			<arg value="${max.png}" />
+	  </exec>
+
+	  <copy todir="${doja.src.dir}">
+		<fileset dir="${wtk.src.dir}">
+		  <include name="**/*.java" />
+		  <include name="**/*.java${doja.suffix}" />
+		  <exclude name="**/.svn" />
+		</fileset>
+	  </copy>
+	  <move file="${doja.src.dir}/com/strnet/game/main/Main.java${doja.suffix}" tofile="${doja.src.dir}/com/strnet/game/main/Main.java" />
+	  <replace encoding="Shift_JIS" file="${doja.src.dir}/com/strnet/game/main/Main.java">
+		<replacefilter token="@@DX_MODE@@" value="${dx}"/>
+		<replacefilter token="@@ARCHIVE_VERSION@@" value="${app.version}"/>
+	  </replace>
+	  <move file="${doja.src.dir}/com/strnet/game/main/AppgetDx.java.i" tofile="${doja.src.dir}/com/strnet/game/main/AppgetDx.java" failonerror="false" />
+	</target>
+
+
+	<!-- Softbank only -->
+	<target name="vf_setting">
+	  <mkdir dir="${vf.project.dir}" />
+	  <mkdir dir="${vf.src.dir}" />
+	  <mkdir dir="${vf.res.dir}" />
+	  <copy todir="${vf.res.dir}">
+		<fileset dir="${wtk.res.dir}">
+		  <include name="*.png" />
+		  <include name="*.dat" />
+		  <include name="*.properties" />
+		  <include name="*.spf" />
+		</fileset>
+	  </copy>
+	  <copy todir="${vf.src.dir}">
+		<fileset dir="${wtk.src.dir}">
+		  <include name="**/*.java" />
+		  <include name="**/*.java.s" />
+		  <exclude name="**/.svn" />
+		</fileset>
+	  </copy>
+	  <move file="${vf.src.dir}/com/strnet/game/main/Main.java.s" tofile="${vf.src.dir}/com/strnet/game/main/Main.java" />
+	</target>
+
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" 
+               destdir="${classes.dir}"
+			   classpath="${class.path}"
+			   encoding="Shift_JIS"
+			   source="1.4"
+               debug="off">
+        </javac>
+    </target>
+
+
+	<target name="preverify">
+        <mkdir dir="${preverify.dir}"/>
+		<exec executable="${preverify.path}" failonerror="true">
+			  <arg value="-nofinalize" />
+			  <arg value="-nonative" />
+<!--			  <arg value="-target" />
+			  <arg value="CLDC1.1" /> -->
+			  <arg value="-classpath" />
+			  <arg value="${class.path}" />
+			  <arg value="-d" />
+			  <arg value="${preverify.dir}" />
+			  <arg value="${classes.dir}" />
+		</exec>
+		<delete dir="${classes.dir}"/>
+		<move file="${preverify.dir}" tofile="${classes.dir}" />
+	</target>
+
+    <target name="buildjar">
+	  <mkdir dir="${bin.dir}" />
+	    <jar jarfile="${bin.dir}/${project.name}.jar">
+		    <fileset dir="${classes.dir}" />
+		</jar>
+	</target>
+
+    <target name="buildjar-midp">
+	    <jar update="true" destfile="${bin.dir}/${project.name}.jar" manifest="${manifest}" manifestencoding="${encoding}">
+		  <fileset dir="${classes.dir}" />
+		  <fileset dir="${res.dir}">
+			<exclude name="*.gif" />
+			<exclude name="*.mld" />
+			<exclude name="*.spf" />
+		  </fileset>
+		</jar>
+	</target>
+
+    <target name="buildjar-vf">
+	    <jar update="true" destfile="${bin.dir}/${project.name}.jar" manifest="${manifest}" manifestencoding="${encoding}">
+		  <fileset dir="${classes.dir}" />
+		  <fileset dir="${res.dir}">
+		  </fileset>
+		</jar>
+	</target>
+
+	<target name="proguard">
+		<exec executable="java">
+			<arg value="-jar" />
+			<arg value="${proguard.path}"/>
+			<arg value="-injar" />
+			<arg value="${bin.dir}/${project.name}.jar" />
+			<arg value="-outjar" />
+			<arg value="${bin.dir}/${project.name}2.jar" />
+			<arg value="-libraryjars" />
+			<arg value="${class.path}" />
+			<arg value="-keep" />
+			<arg value="${keep.class}" />
+			<arg value="-dontusemixedcaseclassnames" />
+		<arg value="-overloadaggressively" />
+			<arg value="-allowaccessmodification" />
+			<arg value="-printseeds" />
+			<arg value="-dontskipnonpubliclibraryclasses" />
+		</exec>
+		<move file="${bin.dir}/${project.name}2.jar" tofile="${bin.dir}/${project.name}.jar" overwrite="true" />
+	</target>
+
+
+	<target name="unzip">
+		<exec executable="${zip.path}">
+			<arg value="x" />
+			<arg value="-o${unzip.dir}" />
+			<arg value="${bin.dir}/${project.name}.jar" />
+		</exec>
+		<delete dir="${classes.dir}"/>
+		<delete file="${bin.dir}/${project.name}.jar"/>
+		<move file="${unzip.dir}" tofile="${classes.dir}" />
+	</target>
+
+
+	<target name="7zip">
+		<exec executable="${zip.path}">
+			<arg value="a" />
+			<arg value="-tzip" />
+			<arg value="-mx=9" />
+			<arg value="-mfb=128" />
+			<arg value="${bin.dir}/${project.name}3.jar" />
+			<arg value="${classes.dir}/*" />
+			<arg value="${resource}" />
+		</exec>
+		<move file="${bin.dir}/${project.name}3.jar" tofile="${bin.dir}/${project.name}.jar" />
+	</target>
+
+	<!-- i-mode only -->
+	<target name="7zip-classonly">
+		<exec executable="${zip.path}">
+			<arg value="a" />
+			<arg value="-tzip" />
+			<arg value="-mx=9" />
+			<arg value="-mfb=128" />
+			<arg value="${bin.dir}/${project.name}3.jar" />
+			<arg value="${classes.dir}/*" />
+			<arg value="${doja.res.dir}/appicon.gif" />
+			<arg value="${doja.res.dir}/appmaintitle.gif" />
+		</exec>
+		<move file="${bin.dir}/${project.name}3.jar" tofile="${bin.dir}/${project.name}${doja.old}.jar" />
+
+		<exec executable="${zip.path}">
+			<arg value="a" />
+			<arg value="-tzip" />
+			<arg value="-mx=9" />
+			<arg value="-mfb=128" />
+			<arg value="${bin.dir}/${project.name}_res.jar" />
+			<arg value="${resource}" />
+		</exec>
+		<exec executable="${split.exec.path}">
+		  <arg value="${bin.dir}/${project.name}_res.jar" />
+		</exec>
+		<delete file="${bin.dir}/${project.name}_res.jar" />
+	</target>
+
+
+	<target name="jam">
+		<delete file="${doja.bin.dir}/${project.name}${doja.old}.jam"/>
+		<tstamp>
+			<format property="touch.time"
+				pattern = "EEE, dd MMM yyyy HH:mm:ss"
+				locale = "en"
+				/>
+		</tstamp>
+		<exec executable="${fsize.file}" outputproperty="fsize">
+			<arg value="${doja.bin.dir}/${project.name}${doja.old}.jar" />
+		</exec>
+		<copy file="${tmp.jam}" tofile="${doja.bin.dir}/${project.name}.jam" />
+		<copy overwrite="true" failonerror="false" file="${wtk.project.dir}/tmp.jam" tofile="${doja.bin.dir}/${project.name}${doja.old}.jam" />
+		<replace encoding="Shift_JIS" file="${doja.bin.dir}/${project.name}${doja.old}.jam">
+			<replacefilter token="@@APP_SIZE@@" value="${fsize}"/>
+			<replacefilter token="@@LAST_MODIFIED@@" value="${touch.time}"/>
+			<replacefilter token="@@JAR_NAME@@" value="${project.name}${doja.old}.jar"/>
+			<replacefilter token="@@APP_VERSION@@" value="${app.version}"/>
+			<replacefilter token="@@RECORD_SIZE@@" value="${record.size}"/>
+			<replacefilter token="@@APP_NAME@@" value="${app.name}"/>
+			<replacefilter token="@@USE_BROWSER@@" value="${use.browser}"/>
+		</replace>
+	</target>
+
+	<!-- midp only -->
+	<target name="jad">
+		<delete file="${bin.dir}/${project.name}.jad"/>
+		<exec executable="${fsize.file}" outputproperty="fsize">
+			<arg value="${bin.dir}/${project.name}.jar" />
+		</exec>
+		<copy file="${tmp.jad}" tofile="${bin.dir}/${project.name}.jad" />
+		<copy overwrite="true" failonerror="false" file="${wtk.project.dir}/tmp.jad" tofile="${bin.dir}/${project.name}.jad" />
+		<replace file="${bin.dir}/${project.name}.jad" encoding="utf-8">
+			<replacefilter token="@@APP_SIZE@@" value="${fsize}"/>
+			<replacefilter token="@@LAST_MODIFIED@@" value="${touch.time}"/>
+			<replacefilter token="@@PROJECT_NAME@@" value="${project.name}"/>
+			<replacefilter token="@@APP_VERSION@@" value="${app.version}"/>
+			<replacefilter token="@@RECORD_SIZE@@" value="${record.size}"/>
+			<replacefilter token="@@APP_NAME@@" value="${app.name}"/>
+		</replace>
+	</target>
+
+	<target name="manifest">
+		<copy file="${tmp.manifest}" tofile="${manifest}" overwrite="true" />
+		<replace file="${manifest}" encoding="${encoding}">
+			<replacefilter token="@@APP_NAME@@" value="${app.name}"/>
+			<replacefilter token="@@VENDOR@@" value="${vendor}"/>
+			<replacefilter token="@@PROJECT_NAME@@" value="${project.name}"/>
+			<replacefilter token="@@ICON@@" value="${wtk.icon}"/>
+			<replacefilter token="@@APP_VERSION@@" value="${app.version}"/>
+		</replace>
+	</target>
+
+
+    <target name="emu">
+	    <exec executable="${wtk.path}/bin/emulator${exe.suffix}">
+		    <arg value="-classpath" />
+      		<arg value="${wtk.class.path}${separator}${wtk.bin.dir}/${project.name}.jar" />
+		    <arg value="-Xheapsize:1500k" />
+		    <arg value="-Xdescriptor" />
+		    <arg value="${wtk.bin.dir}/${project.name}.jad" />
+		</exec>
+    </target>
+
+
+<!--  Antで作るとインストール時エラーになる
+	<target name="manifest">
+	  <manifest file="${manifest}">
+		<attribute name="MIDlet-1" value="${project.name},icon.png,com.strnet.game.main.Main" />
+	    <attribute name="MIDlet-Name" value="${app.name}" />
+		<attribute name="MIDlet-Vendor" value="${vendor}" />
+		<attribute name="MIDlet-Version" value="1.0" />
+		<attribute name="MicroEdition-Profile" value="MIDP-2.0" />
+		<attribute name="MicroEdition-Configuration" value="CLDC-1.1" />
+		<attribute name="MIDlet-Data-Size" value="${fsize}" />
+  	  </manifest>
+	</target>
+-->	
+
+	<target name="web_create">
+	  <delete dir="${web.dir}"/>
+      <mkdir dir="${web.dir}"/>
+	  <copy todir="${web.dir}">
+		<fileset dir="${web.template.dir}">
+		  <include name="**/*.html" />
+		  <include name="**/*.xhtml" />
+		</fileset>
+	  </copy>
+	  <replace file="${web.dir}/au/index.xhtml" encoding="Shift_JIS">
+		<replacefilter token="@@URL_HEADER@@" value="${url.header}"/>
+		<replacefilter token="@@PROJECT_NAME@@" value="${project.name}"/>
+		<replacefilter token="@@APP_NAME@@" value="${app.name}"/>
+	  </replace>
+	  <replace file="${web.dir}/i/index.html" encoding="Shift_JIS">
+		<replacefilter token="@@URL_HEADER@@" value="${url.header}"/>
+		<replacefilter token="@@PROJECT_NAME@@" value="${project.name}"/>
+		<replacefilter token="@@APP_NAME@@" value="${app.name}"/>
+	  </replace>
+	  <replace file="${web.dir}/i/o.html" encoding="Shift_JIS">
+		<replacefilter token="@@URL_HEADER@@" value="${url.header}"/>
+		<replacefilter token="@@PROJECT_NAME@@" value="${project.name}"/>
+		<replacefilter token="@@APP_NAME@@" value="${app.name}"/>
+	  </replace>
+
+	  <copy todir="${web.dir}/i/" failonerror="false">
+		<fileset dir="${doja.bin.dir}">
+		  <include name="*.jar" />
+		  <include name="*.jam" />
+		  <include name="*.spl" />
+		</fileset>
+	  </copy>
+<!--
+	  <copy file="${doja.bin.dir}/${project.name}.jam" todir="${web.dir}/i/" />
+	  <copy file="${doja.bin.dir}/${project.name}.jar" todir="${web.dir}/i/" />
+-->
+	  <copy file="${wtk.project.dir}/bin/${project.name}.jad" todir="${web.dir}/au/" />
+	  <copy file="${wtk.project.dir}/bin/${project.name}.jar" todir="${web.dir}/au/" />
+	</target>
+
+
+	<target name="ftp_siken">
+	  <antcall target="ftp">
+		<param name="ftp.server" value="192.168.11.3" />
+		<param name="ftp.port" value="4444" />
+		<param name="ftp.remotedir" value="/public_html/mtest/" />
+		<param name="ftp.userid" value="mobile_test" />
+		<param name="ftp.password" value="strstr28" />
+		<param name="url.header" value="www.strnet.com/mtest" />
+	  </antcall>
+	</target>
+
+	<target name="ftp_str">
+	  <antcall target="ftp">
+		<param name="ftp.server" value="192.168.11.3" />
+		<param name="ftp.port" value="4444" />
+		<param name="ftp.remotedir" value="/public_html/m/apps/" />
+		<param name="ftp.userid" value="mobile_test" />
+		<param name="ftp.password" value="strstr28" />
+		<param name="url.header" value="m.strnet.com/apps" />
+	  </antcall>
+	</target>
+
+	<target name="ftp_honban">
+	  <antcall target="ftp">
+		<param name="ftp.server" value="ac-ftp.appget.com" />
+		<param name="ftp.port" value="21" />
+		<param name="ftp.remotedir" value="/public_html" />
+		<param name="ftp.userid" value="AC24669" />
+		<param name="ftp.password" value="strstr28" />
+		<param name="url.header" value="ac.appget.com/AC24669" />
+	  </antcall>
+	</target>
+
+	<target name="ftp" depends="web_create">
+	  <ftp action="del"
+		   server="${ftp.server}"
+		   port="${ftp.port}"
+		   remotedir="${ftp.remotedir}"
+		   userid="${ftp.userid}"
+		   password="${ftp.password}">
+		<fileset>
+		  <include name="${project.name}" />
+		  <include name="${project.name}/**" />
+		</fileset>
+	  </ftp>
+
+	  <ftp action="rmdir"
+		   server="${ftp.server}"
+		   port="${ftp.port}"
+		   remotedir="${ftp.remotedir}"
+		   userid="${ftp.userid}"
+		   password="${ftp.password}">
+		<fileset>
+		  <include name="${project.name}" />
+		  <include name="${project.name}/**" />
+		</fileset>
+	  </ftp>
+
+	  <ftp
+		   server="${ftp.server}"
+		   port="${ftp.port}"
+		   remotedir="${ftp.remotedir}"
+		   userid="${ftp.userid}"
+		   password="${ftp.password}">
+		<fileset dir="${ftp.upload.dir}">
+		  <include name="**/*.html" />
+		  <include name="**/*.xhtml" />
+		  <include name="**/*.jar" />
+		  <include name="**/*.jad" />
+		  <include name="**/*.jam" />
+		  <include name="**/*.spl" />
+		</fileset>
+	  </ftp>
+	</target>
+
+    <target name="doja_dx">
+	  <antcall target="doja">
+		<param name="dx" value=".dx" />
+	  </antcall>
+	</target>
+
+    <target name="doja_f">
+	  <antcall target="doja-f-all-impl">
+		<param name="bin.dir" value="${doja.bin.dir}" />
+		<param name="classes.dir" value="${doja.classes.dir}" />
+		<param name="src.dir" value="${doja.src.dir}" />
+		<param name="res.dir" value="${doja.res.dir}" />
+		<param name="unzip.dir" value="${doja.unzip.dir}" />
+		<param name="class.path" value="${doja.path}/lib/classes.zip${separator}${doja.path}/lib/doja_classes.zip" />
+		<param name="preverify.dir" value="${doja.preverify.dir}" />
+		<param name="preverify.path" value="${doja.path}/bin/preverify.exe" />
+		<param name="resource" value="${doja.res.dir}/*.*" />
+		<param name="encoding" value="Shift_JIS" />
+		<param name="doja.old" value="_o" />
+		<param name="doja.suffix" value=".f" />
+		</antcall>
+	</target>
+
+    <target name="doja">
+      <antcall target="doja_f">
+		<param name="record.size" value="${f.record.size}"/>
+	  </antcall>
+	  <antcall target="doja-all-impl">
+		<param name="bin.dir" value="${doja.bin.dir}" />
+		<param name="classes.dir" value="${doja.classes.dir}" />
+		<param name="src.dir" value="${doja.src.dir}" />
+		<param name="res.dir" value="${doja.res.dir}" />
+		<param name="unzip.dir" value="${doja.unzip.dir}" />
+		<param name="class.path" value="${doja.path}/lib/classes.zip${separator}${doja.path}/lib/doja_classes.zip" />
+		<param name="preverify.dir" value="${doja.preverify.dir}" />
+		<param name="preverify.path" value="${doja.path}/bin/preverify.exe" />
+		<param name="resource" value="${doja.res.dir}/*.*" />
+		<param name="encoding" value="Shift_JIS" />
+		</antcall>
+	</target>
+
+    <target name="doja-all-impl">
+    	<antcall target="clean" />
+    	<antcall target="setting" />
+    	<antcall target="compile" />
+    	<antcall target="preverify" />
+    	<antcall target="buildjar" />
+    	<antcall target="proguard" />
+    	<antcall target="unzip" />
+    	<antcall target="preverify" />
+    	<antcall target="7zip" />
+    	<antcall target="jam" />
+	</target>
+
+	
+    <target name="doja-f-all-impl">
+    	<antcall target="clean" />
+    	<antcall target="setting" />
+    	<antcall target="compile" />
+    	<antcall target="preverify" />
+    	<antcall target="buildjar" />
+    	<antcall target="proguard" />
+    	<antcall target="unzip" />
+    	<antcall target="preverify" />
+    	<antcall target="7zip-classonly" />
+    	<antcall target="jam" />
+	</target>
+
+
+
+    <target name="midp">
+      <mkdir dir="${wtk.bin.dir}" />
+      <mkdir dir="${wtk.src.dir}" />
+	  <antcall target="midp-impl">
+		<param name="bin.dir" value="${wtk.bin.dir}" />
+		<param name="tmp.jad" value="${au.tmp.jad}" />
+		<param name="classes.dir" value="${wtk.classes.dir}" />
+		<param name="src.dir" value="${wtk.src.dir}" />
+		<param name="res.dir" value="${wtk.res.dir}" />
+		<param name="unzip.dir" value="${wtk.unzip.dir}" />
+		<param name="class.path" value="${wtk.class.path}" />
+		<param name="preverify.dir" value="${wtk.preverify.dir}" />
+		<param name="preverify.path" value="${wtk.path}/bin/preverify${exe.suffix}" />
+		<param name="resource" value="${wtk.res.dir}/*.png" />
+		<param name="encoding" value="utf-8" />
+	  </antcall>
+	</target>
+
+
+    <target name="midp-all">
+	  <antcall target="midp-all-impl">
+		<param name="bin.dir" value="${wtk.bin.dir}" />
+		<param name="tmp.jad" value="${au.tmp.jad}" />
+		<param name="classes.dir" value="${wtk.classes.dir}" />
+		<param name="src.dir" value="${wtk.src.dir}" />
+		<param name="res.dir" value="${wtk.res.dir}" />
+		<param name="unzip.dir" value="${wtk.unzip.dir}" />
+		<param name="class.path" value="${wtk.class.path}" />
+		<param name="preverify.dir" value="${wtk.preverify.dir}" />
+		<param name="preverify.path" value="${wtk.path}/bin/preverify${exe.suffix}" />
+		<param name="resource" value="${wtk.res.dir}/*.png" />
+		<param name="encoding" value="utf-8" />
+	  </antcall>
+	</target>
+
+    <target name="vf">
+      <antcall target="vf_setting" />
+	  <antcall target="vf-all-impl">
+		<param name="bin.dir" value="${vf.bin.dir}" />
+		<param name="tmp.jad" value="${vf.tmp.jad}" />
+		<param name="classes.dir" value="${vf.classes.dir}" />
+		<param name="src.dir" value="${vf.src.dir}" />
+		<param name="res.dir" value="${vf.res.dir}" />
+		<param name="unzip.dir" value="${vf.unzip.dir}" />
+		<param name="class.path" value="${vf.class.path}" />
+		<param name="preverify.dir" value="${wtk.preverify.dir}" />
+		<param name="preverify.path" value="${wtk.path}/bin/preverify${exe.suffix}" />
+		<param name="resource" value="${vf.res.dir}/*.*" />
+		<param name="encoding" value="utf-8" />
+		<param name="tmp.manifest" value="${vf.tmp.manifest}" />
+	  </antcall>
+	</target>
+
+    <target name="vf-all-impl">
+    	<antcall target="clean" />
+    	<antcall target="compile" />
+    	<antcall target="manifest" />
+    	<antcall target="preverify" />
+    	<antcall target="buildjar" />
+    	<antcall target="proguard" />
+    	<antcall target="unzip" />
+    	<antcall target="preverify" />
+    	<antcall target="buildjar-vf" />
+    	<antcall target="jad" />
+	</target>
+
+    <target name="midp-impl">
+    	<antcall target="clean" />
+    	<antcall target="compile" />
+    	<antcall target="manifest" />
+    	<antcall target="preverify" />
+    	<antcall target="buildjar-midp" />
+    	<antcall target="jad" />
+	</target>
+
+    <target name="midp-all-impl">
+    	<antcall target="clean" />
+    	<antcall target="compile" />
+    	<antcall target="manifest" />
+    	<antcall target="preverify" />
+    	<antcall target="buildjar" />
+    	<antcall target="proguard" />
+    	<antcall target="unzip" />
+    	<antcall target="preverify" />
+    	<antcall target="buildjar-midp" />
+    	<antcall target="jad" />
+	</target>
+
+	<target name="pc_setting">
+	  <mkdir dir="${pc.project.dir}" />
+	  <mkdir dir="${pc.src.dir}" />
+	  <mkdir dir="${pc.res.dir}" />
+	  <copy todir="${pc.res.dir}">
+		<fileset dir="${wtk.res.dir}">
+		  <include name="*.png" />
+		</fileset>
+	  </copy>
+	  <copy todir="${pc.src.dir}">
+		<fileset dir="${wtk.src.dir}">
+		  <include name="**/*.java" />
+		  <include name="**/*.java.pc" />
+		  <exclude name="**/.svn" />
+		</fileset>
+	  </copy>
+	  <move file="${pc.src.dir}/com/strnet/game/main/Main.java.pc" tofile="${pc.src.dir}/com/strnet/game/main/Main.java" />
+	</target>
+
+	<target name="pc">
+      <antcall target="pc_setting" />
+	  <antcall target="pc-all-impl">
+		<param name="bin.dir" value="${pc.bin.dir}" />
+		<param name="classes.dir" value="${pc.classes.dir}" />
+		<param name="src.dir" value="${pc.src.dir}" />
+		<param name="res.dir" value="${pc.res.dir}" />
+		<param name="resource" value="${pc.res.dir}/*.*" />
+	  </antcall>
+  </target>
+
+    <target name="pc-all-impl">
+    	<antcall target="clean" />
+    	<antcall target="compile" />
+	</target>
+</project>

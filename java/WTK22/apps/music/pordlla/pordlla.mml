@@ -1,0 +1,50 @@
+テンポ１１２
+
+トラック１
+調＃（ファ）音色(Marimba)　l8　音階５　ゲート６０　音量１２７
+[2
+[2 [2 d^^fa^] g^^r8e^ : g^^ec^] g^d^<ag>
+[2 [2 d^^fa^] g^^r8e^ : g^^ec^] g^d^<b-^>
+[2 a^^^^^g^^^^^ a<a>cae^ : g^^^^^] g^e^c^
+]
+トラック２
+調＃（ファ）音色(SteelDrums)　l8　音階５　ゲート６０　音量９０
+[2
+[2 [2 d^^fa^] g^^r8e^ : g^^ec^] g^d^<ag>
+[2 [2 d^^fa^] g^^r8e^ : g^^ec^] g^d^<b-^>
+[2 a^^^^^g^^^^^ a<a>cae^ : g^^^^^] g^e^c^
+]
+トラック３
+調＃（ファ）音色(SynthBass1)　音符４　音階４　ゲート９０　音量６０
+[2
+[2 [2 <a>df] <g>ce : <g>ce] <gb->d
+[2 [2 <a>df] <g>ce : <g>ce] <gb->d
+[2 ec<a> ec<g> ec<a> ec<g>]
+]
+/*
+~{ば} = {n(LowConga)}
+~{ち} = {n(RideCymbal1)}
+*/
+~{ば} = {n(Kick2)}
+~{す} = {n(Snare1)}
+~{ち} = {n(RideCymbal1)}
+~{は} = {n(HighTom1)}
+~{ろ} = {n(LowTom1)}
+~{く} = {n(SplashCymbal)}
+~{ぐ} = {n(CrashCymbal2)}
+~{お} = {n(OpenHiHat)}
+~{ず} = {n(ClosedHiHat)}
+~{ぺ} = {n(PedalHiHat)}
+トラック１０　チャンネル１０　音量９０
+[2
+[8 ばばば]
+[8 ばばば]
+[8 ばばば]
+]
+トラック１１　チャンネル１０　音量６０
+//[7 ちl8ちl16ッちl4ち] ち「ちは」「ちろ」
+[2
+くl8ちl16ッちl4ち [6 ちl8ちl16ッちl4ち] ち「は」「ろ」
+くl8ちl16ッちl4ち [6 ちl8ちl16ッちl4ち] ちl8ちl16すすl8ちおl4
+ぐl8ちl16ッちl4ち [6 ちl8ちl16ッちl4ち] ち「は」「ろ」
+]

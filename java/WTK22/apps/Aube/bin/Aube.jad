@@ -1,0 +1,8 @@
+MIDlet-1: Aube, icon.png, com.strnet.game.main.Main
+MIDlet-Jar-Size: 94932
+MIDlet-Jar-URL: Aube.jar
+MIDlet-Name: ほうとぎ
+MIDlet-Vendor: STR
+MIDlet-Version: 1.0.2
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

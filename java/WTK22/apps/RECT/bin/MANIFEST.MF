@@ -1,0 +1,6 @@
+MIDlet-1: RECT, icon.png, Main
+MIDlet-Name: RECT
+MIDlet-Vendor: STR
+MIDlet-Version: 0.97
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

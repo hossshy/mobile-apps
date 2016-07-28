@@ -1,0 +1,71 @@
+テンポ128
+
+[2
+
+トラック１
+音色(SteelDrums)　l8　音階4　ゲート６０　音量１２７
+
+
+[6 errgrgrg errgrgrg drffrfrd fraararf ]
+
+トラック２
+音色(SynthBass1)　l8　音階3　ゲート６０　音量９０
+
+[6 crcerere crcerere drdfrfrf crcfrfrf ]
+
+トラック３
+音色(Clarinet)　l8　音階5　ゲート６０　音量127
+
+[2 rrrrrrrr rrrrrrrr rrrrrrrr rrrrrrrr]
+
+[2
+ ccccreer ccccreer daaaarrr daaaarrr
+ ccccreer ccccreer daaaarrr aaafrcr<a>
+]
+
+~{ば} = {n(Kick1)}
+~{す} = {n(Snare2)}
+~{ず} = {n(ClosedHiHat)}
+~{お} = {n(OpenHiHat)}
+~{は} = {n(HighTom1)}
+~{ろ} = {n(LowTom1)}
+~{く} = {n(CrashCymbal1)}
+~{し} = {n(SplashCymbal)}
+トラック１０　チャンネル１０　l8　音量９０
+[6 [4 ばッッばッばッば] ]
+
+トラック１１　チャンネル１０　l4　音量９０
+
+[4 [2 ずおずお ] ]
+
+[2
+ずおずお ずおずお
+l8 ずししししッッッ　l8 ずししししッッッl4
+
+ずおずお ずおずお
+l8 ずししししッッッ　l8 ずッおッずずッッl4
+]
+
+トラック１２　チャンネル１０　l4　音量９０
+
+ッすッす ッすッす
+ッすッす ッすッl16すすすすl4
+
+くすッす ッすッす
+ッすッす ッすッl16すすすすl4
+
+l8くッすッッッすl16すす l8ッッすッッッすl16すす
+l8ッッすッッl16ッすすッすッl8　l8ッッすッッl16ッすすッすッl8
+
+l8くッすッッッすl16すす l8ッッすッッッすl16すす
+l8ッッすッッl16ッすすッすッl8　l8ッッすッすすl16ははろろ
+
+
+l8くッすッッッすl16すす l8ッッすッッッすl16すす
+l8ッッすッッl16ッすすッすッl8　l8ッッすッッl16ッすすッすッl8
+
+l8くッすッッッすl16すす l8ッッすッッッすl16すす
+l8ッッすッッl16ッすすッすッl8　l8ッッすッすl16はははろろろ
+
+
+]

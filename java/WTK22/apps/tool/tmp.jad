@@ -1,0 +1,8 @@
+MIDlet-1: @@PROJECT_NAME@@, icon.png, com.strnet.game.main.Main
+MIDlet-Jar-Size: @@APP_SIZE@@
+MIDlet-Jar-URL: @@PROJECT_NAME@@.jar
+MIDlet-Name: @@APP_NAME@@
+MIDlet-Vendor: STR
+MIDlet-Version: @@APP_VERSION@@
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

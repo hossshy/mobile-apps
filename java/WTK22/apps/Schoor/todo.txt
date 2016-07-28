@@ -1,0 +1,39 @@
+interpreter
+
+set
+ item [itemNo]
+ msg [msg]
+ show [itemNo]
+ hide [itemNo]
+ go [wallNo]
+ ending [No]
+ event [No]
+ vib [milliSec]
+
+if
+ isset item [itemNo]
+ isset show [itemNo]
+ isset hide [itemNo]
+ and
+ then
+ elseif
+ else
+ end
+
+
+ex)
+
+if
+ isset show 5
+ isset hide 6
+ set msg hoge
+ set hide 5
+else
+ isset show 5
+ isset hide 6
+ set msg hoge
+ set hide 5
+else
+ set msg piyo
+end
+set go 1

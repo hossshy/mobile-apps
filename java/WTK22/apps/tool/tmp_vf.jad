@@ -1,0 +1,14 @@
+MIDlet-1: @@PROJECT_NAME@@, , com.strnet.game.main.Main
+MIDlet-Application-Range: 0,0
+MIDlet-Data-Size: @@RECORD_SIZE@@
+MIDlet-Icon: icon.png
+MIDlet-Jar-Size: @@APP_SIZE@@
+MIDlet-Jar-URL: @@PROJECT_NAME@@.jar
+MIDlet-Name: @@APP_NAME@@
+MIDlet-Vendor: STR
+MIDlet-Version: @@APP_VERSION@@
+MIDxlet-API: JSCL-1.2.2
+MIDxlet-ScreenSize: 240,260
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
+MIDlet-Permissions: javax.microedition.io.Connector.http
